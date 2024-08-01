@@ -35,7 +35,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: model-artifacts
-        path: trained_model.joblib
+        path: src/trained_model.joblib
     
     - name: Deploy model
       run: |
