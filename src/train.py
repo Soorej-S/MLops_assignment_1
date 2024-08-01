@@ -1,13 +1,14 @@
 import numpy as np
-from model import SimpleModel
+from sklearn.ensemble import RandomForestClassifier
 import joblib
+
 
 # Generate some random data for demonstration
 X = np.random.rand(100, 5)
 y = np.random.randint(0, 2, 100)
 
 # Initialize and train the model
-model = SimpleModel()
+model = RandomForestClassifier(n_estimators=100)
 model.fit(X, y)
 
 # Save the trained model
