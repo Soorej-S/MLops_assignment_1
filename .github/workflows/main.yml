@@ -1,6 +1,9 @@
 name: ML Model CI/CD
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
