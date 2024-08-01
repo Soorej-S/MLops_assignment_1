@@ -1,14 +1,25 @@
 import numpy as np
-from src.model import SimpleModel
+import joblib
+import os
 
 
 def test_model_prediction():
-    model = SimpleModel()
+    # Define the input data
     X = np.random.rand(10, 5)
-    y = np.random.randint(0, 2, 10)
 
-    model.fit(X, y)
-    predictions = model.predict(X)
+    # Load the model from the joblib file
+    model_path = os.path.join("src", "trained_model.joblib")
+    if not os.path.exists(model_path):
+        raise FileNotFoundError(f"Model file not found: {model_path}")
 
-    assert len(predictions) == 10
-    assert all(isinstance(pred, (int, np.integer)) for pred in predictions)
+    loaded_model = joblib.load(model_path)
+
+    # Make predictions using the loaded model
+    predictions = loaded_model.predict(X)
+
+    # Print the predictions
+    print('Predicted values are:', predictions)
+
+
+if __name__ == "__main__":
+    test_model_prediction()

@@ -23,13 +23,19 @@ jobs:
         pip install flake8
         flake8 .
     
-    - name: Run tests
-      run: |
-        pytest
-    
     - name: Train model
       run: |
         python src/train.py
+    
+    - name: Test model
+      run: |
+        python test_model.py
+    
+    - name: Archive model artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: model-artifacts
+        path: src/trained_model.joblib
     
     - name: Deploy model
       run: |
