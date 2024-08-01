@@ -12,5 +12,5 @@ model = RandomForestClassifier(n_estimators=100)
 model.fit(X, y)
 
 # Save the trained model
-joblib.dump(model, 'trained_model.joblib')
+joblib.dump(model, 'src/trained_model.joblib')
 print("Model trained and saved.")
